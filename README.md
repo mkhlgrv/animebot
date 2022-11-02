@@ -4,11 +4,11 @@
 
 1. Install dependecies:
 
-```
-$ pip install -r requirements.txt
+```bash
+pip install -r requirements.txt
 ```
 2. Create `.env` file from template `.envexample`:
-```
-$touch .env
+```bash
+touch .env
 ```
 3. Run `main.ipynb`.
