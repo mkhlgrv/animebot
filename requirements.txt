@@ -1,0 +1,6 @@
+requests==2.26.0
+scrapy==2.6.1
+re==2.2.1
+python-dotenv==0.21.0
+python_telegram_bot==13.14
+telegram==0.0.1
