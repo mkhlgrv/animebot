@@ -9,14 +9,16 @@ from tgbot.config import load_config
 from tgbot.filters.admin import AdminFilter
 from tgbot.handlers.admin import register_admin
 from tgbot.handlers.echo import register_echo
-from tgbot.handlers.user import register_user
-from tgbot.middlewares.environment import EnvironmentMiddleware
+from tgbot.handlers.start import register_start
+# from tgbot.handlers.user import register_user
+# from tgbot.middlewares.environment import EnvironmentMiddleware
+from tgbot.middlewares.throttling import ThrottlingMiddleware
 
 logger = logging.getLogger(__name__)
 
 
 def register_all_middlewares(dp, config):
-    dp.setup_middleware(EnvironmentMiddleware(config=config))
+    dp.setup_middleware(ThrottlingMiddleware())
 
 
 def register_all_filters(dp):
@@ -25,8 +27,8 @@ def register_all_filters(dp):
 
 def register_all_handlers(dp):
     register_admin(dp)
-    register_user(dp)
-
+    register_start(dp)
+# register_user(dp)
     register_echo(dp)
 
 
@@ -50,6 +52,7 @@ async def main():
 
     # start
     try:
+        await dp.skip_updates()
         await dp.start_polling()
     finally:
         await dp.storage.close()
@@ -60,5 +63,6 @@ async def main():
 if __name__ == '__main__':
     try:
         asyncio.run(main())
-    except (KeyboardInterrupt, SystemExit):
+    except (KeyboardInterrupt, SystemExit) as e:
+        print(e)
         logger.error("Bot stopped!")
