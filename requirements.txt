@@ -3,3 +3,6 @@ scrapy==2.6.1
 python-dotenv==0.21.0
 python_telegram_bot==13.14
 telegram==0.0.1
+aiogram~=2.18
+aioredis~=2.0
+environs~=9.0
