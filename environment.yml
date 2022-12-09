@@ -1,4 +1,4 @@
-name: bot
+name: animebot
 dependencies:
   - python=3.8.3
 

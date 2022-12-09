@@ -63,3 +63,5 @@ venv.bak/
 .env
 .ipynb_checkpoints/
 *.log
+
+*.db
